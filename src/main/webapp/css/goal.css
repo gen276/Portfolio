@@ -1,0 +1,123 @@
+@charset "UTF-8";
+
+/* 全体部分 */
+.goal_container{
+	text-align: center;
+	width : 800px ;
+	background-color: #faf8ee;
+    margin: 0 auto;
+    align-items: center;
+}
+
+/* ヘッダー部分 */
+.goal_header{
+    padding-top: 10px;
+    height: 40px;
+    width: 800px;
+}
+
+.login_check{
+    display: flex;
+    align-items: flex-start;
+}
+
+.login_check button{
+    margin-top: 12px;
+    margin-left: 5px;
+    width: 100px;
+    height: 40px;
+}
+
+/* メイン */
+/* 月間目標 */
+
+.goal_check{
+	margin-top: 60px;
+	border : 1px solid rgb(255, 0, 0);
+}
+
+.goal_box{
+	margin: 0 ;
+	background: rgb(255, 128, 128);
+	color : white;
+	padding :10px;
+	text-align: center;
+	font-weight: bold;
+}
+
+.goal_main{
+	margin : 0 ;
+	padding :1em;
+}
+
+
+/* 目標・ステップ登録 */
+.goal_register li{
+    justify-content: space-between ;
+    justify-content: center;
+}
+
+/* ステップ */
+.achieve_step{
+    height: 270px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.step_list_container{
+    margin-top: -17px;
+}
+
+.achieve_step h3{
+    margin-top: -5px;
+}
+
+tr{
+    writing-mode: horizontal-tb;
+}
+
+.achievement_late{
+    padding-top: 20px;
+}
+
+/* 週間目標 */
+.week_goal{
+    display: flex ;
+    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
+    height: 100px;
+}
+
+.goal_step{
+    border: 10px ;
+    list-style: bold;
+}
+
+.goal_register li:nth-of-type(7){
+	padding-top: 5px;
+}
+
+.top_msg{
+	align-items: center;
+}
+
+/* 画面移動 */
+.check_button{
+	padding-top: 20px;
+	padding-bottom: 10px;
+	display: flex ;
+    margin: 0 auto;
+	justify-content: space-between ;
+    height: 30px;
+}
+
+.check_move{
+    margin: 0 auto;
+}
+
+.register_check_btn button{
+	margin-top: 10px;
+	margin-right: 20px;
+}

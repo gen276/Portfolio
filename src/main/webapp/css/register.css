@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+/* 表題部分 */
+.top_register{
+	padding-top : 20px ;
+	font-weight : bold ;
+	height: 100px ;
+	margin: 0 auto;
+	justify-content: center;
+}
+
+.register_required{
+	color:red;
+}
+
+/* リスト部分 */
+.register_list{
+	width: 400px;
+	margin: 0 auto;
+}
+
+.required_info{
+	color:red;
+}
+
+.required_input{
+	color: red;
+	margin-left: -20px;
+	padding-right: -20px;
+}

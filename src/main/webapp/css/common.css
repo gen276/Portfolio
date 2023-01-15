@@ -1,0 +1,81 @@
+@charset "UTF-8";
+
+/* 全画面共通部分 */
+.container{
+	text-align: center;
+	width : 750px ;
+	margin : 0 auto ;
+}
+
+button{
+	background-color: rgb(128, 255, 255);
+	border-radius: 10% ;
+	cursor : pointer ;
+}
+
+a{
+	text-decoration: none;
+	cursor : pointer ;
+}
+
+ul{
+	list-style: none;
+}
+
+
+tr{
+	text-align: center;
+}
+
+table{
+	border :  3 ;
+	max-width : 800 ;
+	height : 150 ;
+}
+
+/* ヘッダー部分 */
+header{
+	margin-top: 50px;
+	background-color: blue;
+	color:white;
+}
+
+/* メイン部分 */
+.menu_container{
+	max-height: 1000px;
+}
+
+.top_msg{
+	padding-top : 20px ;
+	font-weight : bold ;
+}
+
+.msg_container{
+    max-height: 600px ;
+}
+
+.msg_container h1{
+	height : 50% ;
+}
+
+/* フッター部分 */
+footer{
+    margin-top: 30px ;
+	background-color: blue;
+	color:white;
+}
+
+/* 新規登録,ログイン時ラベル記入部分 */
+label{
+	width: 150px;
+	justify-content: start;
+}
+
+.input_list{
+	justify-content: end;
+}
+
+ul li{
+	margin-top: 10px;
+	display: flex;
+}
