@@ -34,19 +34,38 @@ public class Goal_Check extends HttpServlet{
    //インスタンスの作成
      Controller_Goal_Register con = new  Controller_Goal_Register();
      GoalBean gBean = new GoalBean();
+      
+ if (request.getParameter("login") != null) {
+   //登録した目標・ステップと登録した本人の紐づけ
+     gBean = con.check_step(name, month, week_of_month);
      
-//登録した目標・ステップと登録した本人の紐づけ
- gBean = con.check_step(name, month, week_of_month);
+     if (gBean == null) {
+         gBean = new GoalBean();
+         gBean.setMonth_goal("未設定です");
+         gBean.setStep1("未設定です");
+         gBean.setStep2("未設定です");
+         gBean.setStep3("未設定です");
+         gBean.setStep4("未設定です");
+         gBean.setStep5("未設定です");
+         gBean.setWeek_goal("未設定です");
+    }
+
+     session.setAttribute("GBean", gBean);
+
+     RequestDispatcher dispatcher = request.getRequestDispatcher("/Goal_check.jsp");
+     dispatcher.forward(request, response);
+     return;
+ }
  
- if (gBean == null) {
+ if (request.getParameter("goal_comp") != null) {
      gBean = con.check_goal(name);
-}
  
  session.setAttribute("GBean", gBean);
  
 RequestDispatcher dispatcher = request.getRequestDispatcher("/Goal_check.jsp");
 dispatcher.forward(request, response);
 
+ }
 } catch (ClassNotFoundException e) {
     e.printStackTrace();
 } catch (SQLException e) {

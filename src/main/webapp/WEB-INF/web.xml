@@ -21,6 +21,10 @@
 		<servlet-name>Step_Comp</servlet-name>
 		<servlet-class>Step_Comp</servlet-class>
     </servlet>
+    <servlet>
+		<servlet-name>Goal_List</servlet-name>
+		<servlet-class>Goal_List</servlet-class>
+    </servlet>
    
 	<servlet-mapping>
 		<servlet-name>Login</servlet-name>
@@ -41,6 +45,10 @@
 	<servlet-mapping>
 		<servlet-name>Step_Comp</servlet-name>
 		<url-pattern>/step_comp</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Goal_List</servlet-name>
+		<url-pattern>/goal_list</url-pattern>
 	</servlet-mapping>
 	
 	

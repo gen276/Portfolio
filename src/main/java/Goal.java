@@ -70,20 +70,23 @@ if (request.getParameter("goal_register") != null) {
     return;
 }
 
+//以前登録した内容で同月同週のものがあればその内容を更新
 gBean = con.check_step(name, month, week);
-if (gBean != null) {
+
+//目標とステップを月名・週名と同時に登録
+if (gBean == null) {
+gBean = con.register(name , month_goal , step1 , step2, step3, step4, step5, week_goal,month,week);
+conn.Goal_Regist(name);
+}else {
     gBean = con.update_register(name, month_goal, step1, step2, step3, step4, step5, week_goal, month, week);
 }
 
-//目標とステップを月名・週名と同時に登録
-gBean = con.register(name , month_goal , step1 , step2, step3, step4, step5, week_goal,month,week);
-conn.Goal_Regist(name);
-
 session.setAttribute("GBean", gBean);
 
-RequestDispatcher dispatcher = request.getRequestDispatcher("/Goal_comp.jsp");
-dispatcher.forward(request, response);
-    
+String disp = "/goal_list";
+RequestDispatcher dispatch = request.getRequestDispatcher(disp);
+dispatch.forward(request, response);
+
 } catch (Exception e) {
    e.printStackTrace();
 }finally {

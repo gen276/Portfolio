@@ -25,7 +25,7 @@
 		<div class = "check_button">
 				<input type = "hidden" name = "name"
 				value = "<jsp:getProperty name = "StudentName" property = "name" />">
-				<button type = "submit" name = "login_result">
+				<button type = "submit" name = "login">
 				次のページに行く</button>
 				<button><a href="Index.jsp">トップページへ戻る</a></button>
 		</div><!-- check_button -->

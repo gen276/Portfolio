@@ -76,6 +76,7 @@
 						<tr><th>ステップ5</th><td><%=goal.getStep5() %></td><td>
 						<button type = "submit"><input type = "hidden" value = "5" name = "complete">完了</button></td></tr>                        
                     </table>
+                        <h3 class = "achievement_late">達成率○％</h3>
                 </div><!-- achieve_step -->
                 
                 <div class = "goal_check">
@@ -85,7 +86,11 @@
                 
                 <div class = "check_button">
 	                <button class = "check_move"><a href = "Goal_register.jsp">目標・ステップの登録</button></a>
-	                <button class = "check_move"><a href = "Goal_list.jsp">目標・ステップ一覧</button></a>
+	                <form action="./goal_list" method="POST" name = "form">
+		                <button class = "check_move" type = "submit">
+		                <input name = "name" type = "hidden" value = "<jsp:getProperty name = "StudentName" property = "name" />">
+		                目標・ステップ一覧へ</button>
+		            </form>
 	                <button class = "check_move"><a href = "Study_start.jsp">学習開始画面へ</button></a>
                 </div><!-- check_button -->
 

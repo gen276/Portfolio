@@ -14,17 +14,8 @@ public class AchieveBean implements Serializable{
     private boolean step4;
     private boolean step5;
     
-    public AchieveBean(String name, int month, int week, boolean step1, boolean step2, boolean step3, boolean step4,
-            boolean step5) {
+    public AchieveBean() {
         super();
-        this.name = name;
-        this.month = month;
-        this.week = week;
-        this.step1 = step1;
-        this.step2 = step2;
-        this.step3 = step3;
-        this.step4 = step4;
-        this.step5 = step5;
     }
     
     public String getName() {

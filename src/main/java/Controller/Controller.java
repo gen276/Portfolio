@@ -8,9 +8,8 @@ import java.sql.SQLException;
 import Bean.RegisterBean;
 import Dao.Database;
 
-/**
- * ・社員情報検索サービス
- */
+//student_info のデータベースを変更するプログラム
+
 //機能:新規登録時:ユーザ情報の登録
 //　　ログイン時:IDとPassWordを元に社員情報を検索
 //　　目標登録時:目標登録のフラグをオンにする

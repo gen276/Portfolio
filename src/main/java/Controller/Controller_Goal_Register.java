@@ -8,6 +8,8 @@ import java.sql.SQLException;
 import Bean.GoalBean;
 import Dao.Database;
 
+//goal_stepのデータベースを変更するプログラム
+
 //機能:初回登録時:目標・ステップを未設定と表示させる
 //       月目標・達成のステップ・週目標を登録、目標初回設定時:目標フラグを立てる
 //　　ログイン後:受け取ったユーザー名を基に目標を抽出する
@@ -28,7 +30,7 @@ public class Controller_Goal_Register implements Database{
                                                                  + "VALUES ( ? , '未設定です' , '未設定です' , '未設定です' , '未設定です' , '未設定です' , '未設定です' , '未設定です');";
 
  /*SQL SELECT文_名前を元に目標とステップを抽出 */
- private static final String SQL_SELECT = "SELECT month_goal , step1 , step2 , step3 , step4 , step5 , week_goal FROM goal_step WHERE name = ? ;";
+ private static final String SQL_SELECT = "SELECT name , month_goal , step1 , step2 , step3 , step4 , step5 , week_goal FROM goal_step WHERE name = ? ;";
 
  /*SQL SELECT文_名前を元に目標とステップを抽出 */
  private static final String SQL_SELECT_STEP = "SELECT month_goal , step1 , step2 , step3 , step4 , step5 , week_goal FROM goal_step WHERE name = ? and month = ? and week = ? ;";
@@ -163,8 +165,6 @@ while (rs.next()) {
     String tmpStep4   = rs.getString("step4");
     String tmpStep5   = rs.getString("step5");
     String tmpWeek_Goal = rs.getString("week_goal");
-    int tmpMonth = rs.getInt("month");
-    int tmpWeek = rs.getInt("week");
    
     Goal = new GoalBean();
     Goal.setName(tmpName);
@@ -175,8 +175,7 @@ while (rs.next()) {
     Goal.setStep4(tmpStep4);
     Goal.setStep5(tmpStep5);
     Goal.setWeek_goal(tmpWeek_Goal);
-    Goal.setMonth(tmpMonth);
-    Goal.setWeek(tmpWeek);
+    return Goal;
 }
     
 } catch (SQLException e) {
@@ -277,7 +276,7 @@ pstmt.setInt(3, week);
 rs = pstmt.executeQuery();
 
 //テーブル内の列名から抽出する内容をgetStringで取ってくる(※1度格納した内容を再度抽出してくる)
-if (rs.next()) {
+while (rs.next()) {
     String tmpMonth_Goal = rs.getString("month_goal");
     String tmpStep1   = rs.getString("step1");
     String tmpStep2   = rs.getString("step2");
@@ -294,14 +293,13 @@ Goal.setStep3(tmpStep3);
 Goal.setStep4(tmpStep4);
 Goal.setStep5(tmpStep5);
 Goal.setWeek_goal(tmpWeek_Goal);
+return Goal;
   }
-  return Goal;
 } catch (SQLException e) {
 e.printStackTrace();
 
-}finally {
 }
-return Goal;
+return null;
 }
 
 
