@@ -37,6 +37,8 @@
 	<title>目標確認画面</title>
 	<link rel = "stylesheet" type = "text/css" href = "./css/goal.css">
 	<link rel = "stylesheet" type = "text/css" href = "./css/common.css">
+	<script type="text/javascript" src = "./js/common.js"></script>
+	
 </head>
 <body>
 
@@ -62,21 +64,42 @@
                 <div class = "achieve_step">
                     <h2>達成ステップ</h2>
 
-				<form action="/step_comp"></form>
+
 					<table border = "3" width = "600" height = "150">
 						<tr><th>完了までの道のり</th><td>ステップ内容</td><td>ステップ内容</td>
-			            <tr><th>ステップ1</th><td><%=goal.getStep1() %></td><td>
-			            <button type = "submit"><input type = "hidden" value = "1" name = "complete">完了</button></td></tr>
-						<tr><th>ステップ2</th><td><%=goal.getStep2() %></td><td>
-						<button type = "submit"><input type = "hidden" value = "2" name = "complete">完了</button></td></tr>
-						<tr><th>ステップ3</th><td><%=goal.getStep3() %></td><td>
-						<button type = "submit"><input type = "hidden" value = "3" name = "complete">完了</button></td></tr>
-						<tr><th>ステップ4</th><td><%=goal.getStep4() %></td><td>
-						<button type = "submit"><input type = "hidden" value = "4" name = "complete">完了</button></td></tr>
-						<tr><th>ステップ5</th><td><%=goal.getStep5() %></td><td>
-						<button type = "submit"><input type = "hidden" value = "5" name = "complete">完了</button></td></tr>                        
+
+				<form action="./step_comp" method = "post">						
+			            <tr><th id = "comp1">ステップ1</th><td><%=goal.getStep1() %></td>
+			            <td><input type = "hidden" value = "1" name = "complete"><input type = "hidden" value = "<jsp:getProperty name = "StudentName" property = "name" />" name = "name">
+			            <button type = "submit" onclick = "return changeline('comp1')">完了</button></td></tr>
+			    </form>
+			            
+			    <form action="./step_comp" method = "post">
+						<tr><th>ステップ2</th><td><%=goal.getStep2() %></td>
+						<td><input type = "hidden" value = "2" name = "complete"><input type = "hidden" value = "<jsp:getProperty name = "StudentName" property = "name" />" name = "name">
+						<button type = "submit" onclick = "return changeline('comp2')">完了</button></td></tr>
+				</form>
+						
+				<form action="./step_comp" method = "post">		
+						<tr id = "comp3"><th>ステップ3</th><td><%=goal.getStep3() %></td>
+						<td><input type = "hidden" value = "3" name = "complete"><input type = "hidden" value = "<jsp:getProperty name = "StudentName" property = "name" />" name = "name">
+						<button type = "submit" onclick = "changeUnderline('comp3');">完了</button></td></tr>
+				</form>
+						
+				<form action="./step_comp" method = "post">		
+						<tr id = "comp4"><th>ステップ4</th><td><%=goal.getStep4() %></td>
+						<td><input type = "hidden" value = "4" name = "complete"><input type = "hidden" value = "<jsp:getProperty name = "StudentName" property = "name" />" name = "name">
+						<button type = "submit" onclick = "changeUnderline('comp4');">完了</button></td></tr>
+				</form>
+												
+				<form action="./step_comp" method = "post">		
+						<tr id = "comp5"><th>ステップ5</th><td><%=goal.getStep5() %></td>
+						<td><input type = "hidden" value = "5" name = "complete"><input type = "hidden" value = "<jsp:getProperty name = "StudentName" property = "name" />" name = "name">
+						<button type = "submit" onclick = "changeUnderline('comp5');">完了</button></td></tr>
+				</form>
+				                       
                     </table>
-                        <h3 class = "achievement_late">達成率○％</h3>
+                        <!--<h3 class = "achievement_late">達成率○％</h3>-->
                 </div><!-- achieve_step -->
                 
                 <div class = "goal_check">
@@ -86,9 +109,9 @@
                 
                 <div class = "check_button">
 	                <button class = "check_move"><a href = "Goal_register.jsp">目標・ステップの登録</button></a>
-	                <form action="./goal_list" method="POST" name = "form">
-		                <button class = "check_move" type = "submit">
+	                <form action="./goal_record" method="POST" name = "form">
 		                <input name = "name" type = "hidden" value = "<jsp:getProperty name = "StudentName" property = "name" />">
+		                <button class = "check_move" type = "submit">
 		                目標・ステップ一覧へ</button>
 		            </form>
 	                <button class = "check_move"><a href = "Study_start.jsp">学習開始画面へ</button></a>

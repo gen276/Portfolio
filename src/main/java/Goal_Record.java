@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.util.Calendar;
 
 import Bean.AchieveBean;
-import Bean.GoalBean;
 import Controller.Controller_Achieve_Check;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -15,7 +14,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
-public class Goal_List extends HttpServlet{
+public class Goal_Record extends HttpServlet{
     public void doPost(HttpServletRequest request , HttpServletResponse response)
     throws ServletException , IOException{
         
@@ -23,7 +22,6 @@ public class Goal_List extends HttpServlet{
         Calendar cal = Calendar.getInstance();
         int month = cal.get(Calendar.MONTH) + 1 ;
         int week_of_month = cal.get(Calendar.WEEK_OF_MONTH);
-        int date = cal.get(Calendar.DATE);
         
  try {
      //セッションの取得
@@ -32,39 +30,47 @@ public class Goal_List extends HttpServlet{
      //インスタンスの作成
      Controller_Achieve_Check con = new  Controller_Achieve_Check();
      AchieveBean aBean = new AchieveBean();
-     GoalBean gBean = new GoalBean();
      
  ////値の取得と返り値を格納する箱の用意
      String name   = request.getParameter("name");
-     int step_num = 0 ;
+     String step2   = request.getParameter("step2");
+     if(step2.equals("未設定です")) {
+         step2 = "false";
+       }else {
+         step2 = "true";
+       }
+     String step3   = request.getParameter("step3");
+     if(step3.equals("未設定です")) {
+         step3 = "false";
+       }else {
+           step3 = "true";
+         }
+     String step4   = request.getParameter("step4");
+     if(step4.equals("未設定です")) {
+         step4 = "false";
+       }else {
+           step4 = "true";
+         }
+     String step5   = request.getParameter("step5");
+     if(step5.equals("未設定です")) {
+         step5 = "false";
+       }else {
+           step5 = "true";
+         }
      
-   //ステップ2以下が未登録の場合はその内容を登録
-     String step2            = request.getParameter("step2");
-     if (step2 .equals("未設定です")) {
-         step_num = 1 ;
-     }
-
-     String step3            = request.getParameter("step3");
-     if (step3 .equals("未設定です") && step_num == 0) {
-         step_num = 2 ;
-     }
-
-     String step4            = request.getParameter("step4");
-     if (step4 .equals("未設定です") && step_num == 0) {
-         step_num = 3 ;
-     }
-
-     String step5            = request.getParameter("step5");
-     if (step5 .equals("未設定です") && step_num == 0) {
-         step_num = 4 ;
-     }
+     boolean tmpstep2 = Boolean.parseBoolean(step2);   
+     boolean tmpstep3 = Boolean.parseBoolean(step3);
+     boolean tmpstep4 = Boolean.parseBoolean(step4);
+     boolean tmpstep5 = Boolean.parseBoolean(step5);
      
-     if (step_num == 0){
-        step_num = 5 ;
-    }
-     
-//     月名,週名,日付を使用してステップの数だけSQLに登録する
-     aBean = con.Goal_Step_Register(name , month, week_of_month , step_num , date);
+//登録した目標・ステップと登録した本人の紐づけ
+ aBean = con.Before_Goal(name , month, week_of_month);
+
+ if (aBean == null) {
+     aBean = con.Goal_Step_Register(name , month, week_of_month , tmpstep2 , tmpstep3 , tmpstep4 , tmpstep5);
+}else {
+    aBean = con.update_register(tmpstep2, tmpstep3, tmpstep4, tmpstep5, name, month, week_of_month);
+}
      
  session.setAttribute("aBean", aBean);
  

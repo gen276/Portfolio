@@ -33,3 +33,16 @@
 	}
 	return true;
     }
+ 
+  /**目標確認画面 完了ボタン押下時取消線表示
+ */
+    function changeline(idname){
+	  var obj = document.getElementById(idname);
+	  if(obj.style.textDecoration == "line-through"){
+	    obj.style.textDecoration = "none";
+	    return true ;
+	  }else{
+	    obj.style.textDecoration = "line-through";
+	    return true ;
+	  }
+	}

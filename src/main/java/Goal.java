@@ -40,7 +40,7 @@ if (step2 == null || step2 == "") {
 String step3            = request.getParameter("step3");
 if (step3 == null || step3 == "") {
     step3 = "未設定です";
-}
+    }
 
 String step4            = request.getParameter("step4");
 if (step4 == null || step4 == "") {

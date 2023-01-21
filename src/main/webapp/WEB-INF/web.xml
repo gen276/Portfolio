@@ -25,6 +25,10 @@
 		<servlet-name>Goal_List</servlet-name>
 		<servlet-class>Goal_List</servlet-class>
     </servlet>
+        <servlet>
+		<servlet-name>Goal_Record</servlet-name>
+		<servlet-class>Goal_Record</servlet-class>
+    </servlet>
    
 	<servlet-mapping>
 		<servlet-name>Login</servlet-name>
@@ -49,6 +53,10 @@
 	<servlet-mapping>
 		<servlet-name>Goal_List</servlet-name>
 		<url-pattern>/goal_list</url-pattern>
+	</servlet-mapping>
+		<servlet-mapping>
+		<servlet-name>Goal_Record</servlet-name>
+		<url-pattern>/goal_record</url-pattern>
 	</servlet-mapping>
 	
 	

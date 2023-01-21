@@ -115,7 +115,7 @@ return null;
 
  //月目標・達成のステップ・週目標を登録、目標初回設定の場合に目標フラグを立てる
 // 引数:名前,登録内容
-@SuppressWarnings("resource")
+//@SuppressWarnings("resource")
 public GoalBean register
 (String name , String month_goal , String step1 , String step2 , String step3 , String step4 , String step5 , String week_goal , int month , int week) 
     throws SQLException, ClassNotFoundException{
