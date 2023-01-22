@@ -16,7 +16,8 @@ public class GoalBean implements Serializable{
     private int      month;
     private int      week;
     private boolean goal_register;
-    private int      goal_num;
+    private int Step_num;
+    private int goal_number;
 
     public GoalBean() {
     }
@@ -109,12 +110,20 @@ public class GoalBean implements Serializable{
         this.goal_register = goal_register;
     }
     
-    public int getGoal_num() {
-        return goal_num;
+    public int getStep_num() {
+        return Step_num;
     }
 
-    public void setGoal_num(int goal_num) {
-        this.goal_num = goal_num;
+    public void setStep_num(int Step_num) {
+        this.Step_num = Step_num;
     }
     
+    public int getGoal_number() {
+        return goal_number;
+    }
+
+    public void setGoal_number(int goal_number) {
+        this.goal_number = goal_number;
+    }
+   
 }

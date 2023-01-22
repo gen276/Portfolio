@@ -68,7 +68,7 @@ try {
         
 //        サーチ関数を使用して返り値をSBeanに格納(SBeanには最終的な値を代入して保管しておく)
         RBean = conn.register(name , id , pass , pref , sex , tel , mail , job);
-        con.First_Goal_Register(name);
+//        con.First_Goal_Register(name);
         
     // SBeanを呼び出した時にサーチ結果が格納できるように返り値をセットする
         request.setAttribute("RBean", RBean);

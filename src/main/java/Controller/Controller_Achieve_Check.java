@@ -17,8 +17,8 @@ public class Controller_Achieve_Check implements Database{
     private static final String SQL_SELECT_STEP =  "SELECT step_num , step_achieve from step_achieve where name = ? and month = ? and week = ?; " ;
 //    
  /*SQL INSERT文 _ 目標登録時_新たな目標行の設定 */
- private static final String SQL_INSERT =  "INSERT INTO step_achieve (name , month , week , step_num , step_achieve , register_date)"
-                                                                 + "VALUES ( ? , ? , ? , ? , 'false' , ?);";
+ private static final String SQL_INSERT =  "INSERT INTO step_achieve (goal_no , achieve)"
+                                                                 + "VALUES ( ? , 'false');";
  
  /*SQL UPDATE文 _ステップ完了時trueのフラグを立てる */
  private static final String SQL_UPDATE =  " UPDATE step_achieve SET step_achieve = 'true' "
@@ -29,9 +29,9 @@ public class Controller_Achieve_Check implements Database{
                                                                +  "FROM step_achieve  INNER JOIN goal_step ON goal_step.month = step_achieve.month WHERE goal_step.name = ? "
                                                                +  " ORDER by year ASC , month ASC , week asc , step_num asc  ; " ;
  
-//目標登録時　名前を起点として月と週名を記入し、記入ステップ部分にfalseのフラグを立てる
-//引数:名前,月,週,ステップ2,ステップ3,ステップ4,ステップ5
-public AchieveBean Goal_Step_Register(String name , int month, int week_of_month , int step_num , int date)
+//目標登録時　goal_noの該当する部分にfalseのフラグを立てる
+//引数:goal_no
+public AchieveBean Goal_Step_Register(int goal_no)
     throws SQLException, ClassNotFoundException{
     //SQL文格納の為の準備
     PreparedStatement pstmt = null ;
@@ -42,44 +42,21 @@ public AchieveBean Goal_Step_Register(String name , int month, int week_of_month
 //    AchieveBean Achieve = null;
 
 try {    
-//    1、登録したステップの数だけステップをデータベースに格納する
-//         (月と週と日付は全て同じ)
-    for (int i = 1 ; i <= step_num ; i++) {
         pstmt = conn.prepareStatement(SQL_INSERT);
         
-        pstmt.setString(1, name);
-        pstmt.setInt(2, month);
-        pstmt.setInt(3, week_of_month);
-        pstmt.setInt(4, i);
-        pstmt.setInt(5, date);
+        pstmt.setInt(1, goal_no);
         
 //        SQLの実行(実行結果は格納しない)
         pstmt.executeUpdate();
-    }
-    
-} catch (SQLException e) {
+}
+//    }
+//    
+   catch (SQLException e) {
     e.printStackTrace();
-
-}finally {
-    try {
-        
-        if (rs != null) {
-        rs.close();
-        }
-        if (pstmt != null) {
-        pstmt.close();
-        }
-        if (conn != null) {
-        conn.close();
-        }
-    
-        } catch (SQLException e) {
-        e.printStackTrace();
-        }
     }
-
 return null;
 }
+
 
 //同じ月と週に目標があった場合に登録済みの内容を更新する
 //引数:名前,月,週,登録内容
