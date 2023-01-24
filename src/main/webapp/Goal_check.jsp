@@ -107,13 +107,13 @@
                     <h3 class = "goal_main"><%=goal.getWeek_goal() %></h3>
                 </div> <!-- goal_check -->
                 
-                <div class = "check_button">
+                <div class = "check_button">type = "submit"
 	                <button class = "check_move"><a href = "Goal_register.jsp">目標・ステップの登録</button></a>
-	                <form action="./goal_record" method="POST" name = "form">
+	                <!--<form action="./goal_record" method="POST" name = "form"></form>-->
 		                <input name = "name" type = "hidden" value = "<jsp:getProperty name = "StudentName" property = "name" />">
-		                <button class = "check_move" type = "submit">
-		                目標・ステップ一覧へ</button>
-		            </form>
+		                <button class = "check_move" ><a href = "Goal_list.jsp">
+		                目標・ステップ一覧へ</button></a>
+		            
 	                <button class = "check_move"><a href = "Study_start.jsp">学習開始画面へ</button></a>
                 </div><!-- check_button -->
 

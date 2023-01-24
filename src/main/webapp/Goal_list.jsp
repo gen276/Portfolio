@@ -5,6 +5,11 @@
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.Calendar" %>
 <jsp:useBean id = "StudentName" scope = "session" class = "Bean.RegisterBean" />
+<%@ page import="Bean.GoalBean"%>
+
+<%
+	Bean.GoalBean goal =(Bean.GoalBean)session.getAttribute("GBean");
+%>
 
 <%!
   private int GetMonth() {
@@ -42,10 +47,10 @@
         <div class = "top_msg">
 		
 			<h2>目標・ステップ一覧</h2>
-		        <table border = "3" width = "400" height = "150" align = "center">
+		        <table border = "3" width = "800" maxheight = "1000" align = "center">
 	
 				<thead><jsp:getProperty name = "StudentName" property = "name" />さんの目標とステップ</thead>
-			        <tr><td>登録月</td><td>月目標</td><td>登録した週</td><td>週目標</td><td>ステップ番号</td><td>ステップ内容</td><td>達成状況(○×)</td>
+			        <tr><td>登録日</td><td>月目標</td><td>週目標</td><td>ステップ番号</td><td>ステップ内容</td><td>達成状況(○×)</td>
 					<tr><th></th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 					<tr><th></th><td></td><td></td><td></td><td></td><td></td><td></td></tr>
 					<tr><th></th><td></td><td></td><td></td><td></td><td></td><td></td></tr>

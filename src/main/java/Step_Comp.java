@@ -7,6 +7,7 @@ import java.util.Calendar;
 
 import Bean.AchieveBean;
 import Controller.Controller_Achieve_Check;
+import Controller.Controller_Goal_Register;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
@@ -20,8 +21,10 @@ public class Step_Comp extends HttpServlet{
         
       //ログイン時の日付と時間取得
         Calendar cal = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR) ;
         int month = cal.get(Calendar.MONTH) + 1 ;
         int week_of_month = cal.get(Calendar.WEEK_OF_MONTH);
+        int date = cal.get(Calendar.DATE) ;
         
  try {
      //セッションの取得
@@ -29,13 +32,16 @@ public class Step_Comp extends HttpServlet{
      
      //インスタンスの作成
      Controller_Achieve_Check con = new  Controller_Achieve_Check();
+     Controller_Goal_Register conn = new  Controller_Goal_Register();
      AchieveBean aBean = new AchieveBean();
      
  ////値の取得と返り値を格納する箱の用意
      String name   = request.getParameter("name");
      int comp   = Integer.parseInt(request.getParameter("complete"));
+     int goal_no = 0 ;
 
-    aBean = con.step_achieve(name , month , week_of_month , comp);
+     goal_no = conn.check_goalno(name , year , month , week_of_month , date , comp);
+    aBean = con.step_achieve(goal_no);
      
  session.setAttribute("aBean", aBean);
  

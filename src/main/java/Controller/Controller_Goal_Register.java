@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import Bean.GoalBean;
 import Dao.Database;
@@ -22,7 +23,7 @@ public class Controller_Goal_Register implements Database{
                                                                  + "VALUES ( ? , ? , ? , ? , ? , ? , ? , ? , ?);";
  
  /*SQL SELECT文_目標登録後、登録した目標とステップを抽出 */
- private static final String SQL_SELECT = "SELECT month_goal , week_goal , step_num , goal_no FROM goal WHERE name = ? and month = ? and week = ? and register_date = ? ;";
+ private static final String SQL_SELECT = "SELECT month_goal , week_goal , step_num , step_content FROM goal WHERE name = ? and month = ? and week = ? and register_date = ? ;";
  
  /*SQL SELECT文_目標登録後、登録した目標とステップを抽出 */
  private static final String SQL_COUNT_REGIST = "SELECT max(step_num) as num FROM goal WHERE name = ? and month = ? and week = ? and register_date = ? ;";
@@ -33,6 +34,9 @@ public class Controller_Goal_Register implements Database{
  /*SQL SELECT文_ログイン時、登録した目標とステップを抽出 */
  private static final String SQL_SELECT_CHECK = "SELECT month_goal , week_goal , step_num , step_content FROM goal WHERE name = ? and month = ? and week = ?;";
  
+ /*SQL SELECT文_目標完了時、登達成した目標番号を抽出 */
+ private static final String SQL_SELECT_GOAL = "SELECT goal_no from goal where name =? and year = ? and month = ? and week = ? and register_date = ? and step_num = ? ;";
+ 
 // /*SQL UPDATE文 _ 目標・ステップ更新時 */
 // private static final String SQL_UPDATE =  " UPDATE goal_step SET month_goal = ? , step1 = ? , step2 = ? , step3 = ? , step4 = ? , step5 = ? , week_goal = ?"
 //                                                                 + "WHERE name = ? and month = ? and week = ? ;";
@@ -42,13 +46,14 @@ private static final GoalBean Goal = null;
  //月目標・達成のステップ・週目標を登録
 // 引数:名前,登録内容
 @SuppressWarnings("resource")
-public GoalBean register
+public ArrayList<Integer> register
 (String name , int year , int month , int week , int register_date , String month_goal , String week_goal , int step_num , String step_content) 
     throws SQLException, ClassNotFoundException{
     //SQL文格納の為の準備
     PreparedStatement pstmt = null ;
     ResultSet rs = null;
     Connection conn = Database.getConnection();
+    ArrayList<Integer> goal_no = new ArrayList<Integer>();
 
 //    Bean格納用の返り値の定義
     GoalBean Goal = null;
@@ -89,14 +94,14 @@ while (rs.next()) {
     String tmpWeek_Goal = rs.getString("week_goal");
     int tmpStep_Num= rs.getInt("step_num");
     int tmpGoal_no = rs.getInt("goal_no");
-
+//
     Goal = new GoalBean();
     Goal.setMonth_goal(tmpMonth_Goal);
     Goal.setWeek_goal(tmpWeek_Goal);
     Goal.setStep_num(tmpStep_Num);
-    Goal.setGoal_number(tmpGoal_no);
-
-    return Goal;
+    goal_no.add(tmpGoal_no) ;
+//
+//    return Goal;
 }
     
 } catch (SQLException e) {
@@ -120,7 +125,7 @@ while (rs.next()) {
         }
     }
 
-return Goal;
+return goal_no;
 }
 
 
@@ -246,7 +251,7 @@ public GoalBean check_goal(String name , int month , int week , int register_dat
    rs = pstmt.executeQuery();
 
    //テーブル内の列名から抽出する内容をgetStringで取ってくる(※1度格納した内容を再度抽出してくる)
-   for (int i = 0 ; i < Goal.getStep_num() ; i++) {
+   for (int i = 0 ; i < Goal.getStep_num() ;) {
        while (rs.next()) {
            String tmpMonth_Goal = rs.getString("month_goal");
            String tmpWeek_Goal = rs.getString("week_goal");
@@ -277,5 +282,49 @@ public GoalBean check_goal(String name , int month , int week , int register_dat
  }
 return Goal;
 
+}
+
+
+public int check_goalno(String name , int year , int month , int week_of_month , int date , int stepnum)
+        throws SQLException, ClassNotFoundException{
+    //SQL文格納の為の準備
+    PreparedStatement pstmt = null ;
+    ResultSet rs = null;
+    Connection conn = Database.getConnection();
+    int goal_no = 0 ;
+
+    try {
+      //Bean格納用の返り値の定義
+      GoalBean Goal = null;
+
+      //ステップ数を確認する
+      pstmt = conn.prepareStatement(SQL_SELECT_GOAL);
+
+      //テーブル内の列名から抽出する内容をgetStringで取ってくる(※1度格納した内容を再度抽出してくる)
+      //SELECT文で検索する内容を記述
+      pstmt.setString(1, name);
+      pstmt.setInt(2, year);
+      pstmt.setInt(3, month);
+      pstmt.setInt(4, week_of_month);
+      pstmt.setInt(5, date);
+      pstmt.setInt(6, stepnum);
+
+      //SQLの実行と処理結果の格納
+      rs = pstmt.executeQuery();
+
+      while (rs.next()) {
+          int tmpGoal_Num = rs.getInt("goal_no");
+          
+          goal_no = tmpGoal_Num ;
+      }
+       
+   } catch (SQLException e) {
+    e.printStackTrace();
+
+   }finally {
+    }
+   return goal_no;
+
+   }{
 }
 }

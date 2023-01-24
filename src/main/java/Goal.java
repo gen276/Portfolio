@@ -40,10 +40,12 @@ AchieveBean aBean = new AchieveBean();
 GoalBean gBean = new GoalBean();
         
 ////値の取得
+ArrayList<Integer> goal_no = new ArrayList<Integer>();
 String name            = request.getParameter("name");
 String month_goal = request.getParameter("month_goal");
 ArrayList<String> StepList = new ArrayList<String>();
 String step1            = request.getParameter("step1");
+
 StepList.add(step1);
 
 //ステップ2以下が未登録の場合はその内容を登録
@@ -114,11 +116,15 @@ if (step_num == 0){
    step_num = 5 ;
 }
 
-//ステップが登録された数だけデータベースに目標とステップを登録する
+//ステップが登録された数だけデータベースに目標とステップを登録し、登録数分の登録番号を取得する
 for (int i = 1 ;  i <= step_num ; i++) {
-    gBean = con.register(name , year , month , week_of_month , date , month_goal , week_goal , i , StepList.get(i-1));
-    acon.Goal_Step_Register(gBean.getGoal_number());
+   goal_no = con.register(name , year , month , week_of_month , date , month_goal , week_goal , i , StepList.get(i-1));
 }
+
+for(int i = 0 ;  i < step_num ; i++) {
+    acon.Goal_Step_Register(goal_no.get(i));
+}
+
 conn.Goal_Regist(name);
 
 session.setAttribute("GBean", gBean);
