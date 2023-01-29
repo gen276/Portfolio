@@ -9,6 +9,14 @@
     align-items: center;
 }
 
+.goal_list_container{
+	text-align: center;
+	width : 1400px ;
+	background-color: #faf8ee;
+    margin: 0 auto;
+    align-items: center;
+}
+
 /* ヘッダー部分 */
 .goal_header{
     padding-top: 10px;

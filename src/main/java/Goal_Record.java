@@ -1,11 +1,14 @@
 
+
 //役割:ログイン後の名前を受け取り、その人が設定したゴールとステップを登録する
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
-import Bean.AchieveBean;
+import Bean.Goal_ListBean;
 import Controller.Controller_Achieve_Check;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -29,53 +32,20 @@ public class Goal_Record extends HttpServlet{
      
      //インスタンスの作成
      Controller_Achieve_Check con = new  Controller_Achieve_Check();
-     AchieveBean aBean = new AchieveBean();
+//     AchieveBean aBean = new AchieveBean();
+     List<Goal_ListBean> list = new ArrayList<Goal_ListBean>();
      
  ////値の取得と返り値を格納する箱の用意
      String name   = request.getParameter("name");
-     String step2   = request.getParameter("step2");
-     if(step2.equals("未設定です")) {
-         step2 = "false";
-       }else {
-         step2 = "true";
-       }
-     String step3   = request.getParameter("step3");
-     if(step3.equals("未設定です")) {
-         step3 = "false";
-       }else {
-           step3 = "true";
-         }
-     String step4   = request.getParameter("step4");
-     if(step4.equals("未設定です")) {
-         step4 = "false";
-       }else {
-           step4 = "true";
-         }
-     String step5   = request.getParameter("step5");
-     if(step5.equals("未設定です")) {
-         step5 = "false";
-       }else {
-           step5 = "true";
-         }
-     
-     boolean tmpstep2 = Boolean.parseBoolean(step2);   
-     boolean tmpstep3 = Boolean.parseBoolean(step3);
-     boolean tmpstep4 = Boolean.parseBoolean(step4);
-     boolean tmpstep5 = Boolean.parseBoolean(step5);
      
 //登録した目標・ステップと登録した本人の紐づけ
- aBean = con.Before_Goal(name , month, week_of_month);
-
- if (aBean == null) {
-     aBean = con.Goal_Step_Register(name , month, week_of_month , tmpstep2 , tmpstep3 , tmpstep4 , tmpstep5);
-}else {
-    aBean = con.update_register(tmpstep2, tmpstep3, tmpstep4, tmpstep5, name, month, week_of_month);
-}
+list = con.Create_List(name);
      
- session.setAttribute("aBean", aBean);
+ session.setAttribute("List", list);
  
-RequestDispatcher dispatcher = request.getRequestDispatcher("/Goal_comp.jsp");
+RequestDispatcher dispatcher = request.getRequestDispatcher("/Goal_list.jsp");
 dispatcher.forward(request, response);
+return;
 
 } catch (ClassNotFoundException e) {
     e.printStackTrace();

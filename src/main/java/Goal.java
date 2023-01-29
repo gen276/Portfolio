@@ -116,11 +116,12 @@ if (step_num == 0){
    step_num = 5 ;
 }
 
-//ステップが登録された数だけデータベースに目標とステップを登録し、登録数分の登録番号を取得する
+//ステップが登録された数だけデータベースに目標とステップを登録,登録数分の登録番号を取得する
 for (int i = 1 ;  i <= step_num ; i++) {
    goal_no = con.register(name , year , month , week_of_month , date , month_goal , week_goal , i , StepList.get(i-1));
 }
 
+//登録番号を取得し、falseをつける
 for(int i = 0 ;  i < step_num ; i++) {
     acon.Goal_Step_Register(goal_no.get(i));
 }

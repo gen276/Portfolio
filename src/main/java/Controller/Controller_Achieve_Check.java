@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 import Bean.AchieveBean;
 import Bean.Goal_ListBean;
@@ -31,8 +32,10 @@ public class Controller_Achieve_Check implements Database{
  private static final String SQL_SELECT = " SELECT goal.year , goal.month , goal.week , goal.register_date , goal.month_goal , goal.week_goal , goal.step_num , goal.step_content , step_achieve.achieve"
                                                                  + " FROM goal  INNER JOIN step_achieve ON goal.goal_no = step_achieve.goal_no "
                                                                  + "WHERE goal.name = ? "
-                                                                 + " ORDER by year ASC , month ASC , week asc , step_num asc  "
+                                                                 + " ORDER by year DESC , month DESC , week DESC , step_num asc  "
                                                                  + "LIMIT 10 ; " ;
+ 
+ Goal_ListBean goal = new Goal_ListBean();
  
 //目標登録時　goal_noの該当する部分にfalseのフラグを立てる
 //引数:goal_no
@@ -108,36 +111,54 @@ pstmt = conn.prepareStatement(SQL_UPDATE);
 
 //過去の履歴を参照するリストを作成する為に値を抽出しリストを返却するSQL
 //引数:名前
-public ArrayList<Goal_ListBean> Create_List(String name)
+public List<Goal_ListBean> Create_List(String name)
 throws SQLException, ClassNotFoundException{
 //SQL文格納の為の準備
 PreparedStatement pstmt = null ;
 ResultSet rs = null;
 Connection conn = Database.getConnection();
 Goal_ListBean data = null ;
-//SQL実行後に格納するリストの作成
-ArrayList<Goal_ListBean> goal = new ArrayList<Goal_ListBean>();
+////SQL実行後に格納するリストの作成
+//ArrayList<Goal_ListBean> goal = new ArrayList<Goal_ListBean>();
 
 try {
 pstmt = conn.prepareStatement(SQL_SELECT);
 
 pstmt.setString(1, name);
 
+//List<Integer> idList;
+List<Goal_ListBean> goal_List = new ArrayList<Goal_ListBean>();
+
 //SQLの実行(実行結果は格納しない)
 rs =pstmt.executeQuery();
 
-while (rs.next()) {
-    String tmpYear            = rs.getString("year");
-    String tmpMonth         = rs.getString("month");
-    String tmpWeek          = rs.getString("week");
-    String tmpDate           = rs.getString("register_date");
-    String tmpM_Goal      = rs.getString("month_goal");
-    String tmpW_Goal     = rs.getString("week_goal");
-    int     tmpStep_Num = rs.getInt("step_num");
-    String tmpStep_Content = rs.getString("step_content");
-    String tmpAchieve    = rs.getString("achieve");
-    data = new Goal_ListBean(tmpYear , tmpMonth , tmpWeek , tmpDate , tmpM_Goal , tmpW_Goal , tmpStep_Num , tmpStep_Content , tmpAchieve);
-    goal.add(data);
+for (int i = 0 ; i < 5 ; i++) {
+    while (rs.next()) {
+        int Year            = rs.getInt("year");
+        int Month         = rs.getInt("month");
+        int Week          = rs.getInt("week");
+        int Date           = rs.getInt("register_date");
+        String M_Goal      = rs.getString("month_goal");
+        String W_Goal     = rs.getString("week_goal");
+        int     Step_Num = rs.getInt("step_num");
+        String Step_Content = rs.getString("step_content");
+        Boolean Achieve    = rs.getBoolean("achieve");
+        
+        Goal_ListBean goal = new Goal_ListBean() ;
+        goal.setDate(String.valueOf(Year) + "/" + String.valueOf(Month) + "/" + String.valueOf(Date));
+        goal.setM_goal(M_Goal);
+        goal.setW_goal(W_Goal);
+        goal.setStep_num(Step_Num);
+        goal.setStep_content(Step_Content);
+        if (Achieve == true) {
+            goal.setAchieve("○");
+        }else {
+            goal.setAchieve("×");
+        }
+        
+        goal_List.add(goal);
+    }
+    return goal_List;
 }
 
 } catch (SQLException e) {
@@ -160,6 +181,6 @@ e.printStackTrace();
       e.printStackTrace();
       }
   }
-return goal;
+return null;
 }
 }

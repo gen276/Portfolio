@@ -23,7 +23,7 @@ public class Controller_Goal_Register implements Database{
                                                                  + "VALUES ( ? , ? , ? , ? , ? , ? , ? , ? , ?);";
  
  /*SQL SELECT文_目標登録後、登録した目標とステップを抽出 */
- private static final String SQL_SELECT = "SELECT month_goal , week_goal , step_num , step_content FROM goal WHERE name = ? and month = ? and week = ? and register_date = ? ;";
+ private static final String SQL_SELECT = "SELECT month_goal , week_goal , step_num , step_content , goal_no FROM goal WHERE name = ? and month = ? and week = ? and register_date = ? ;";
  
  /*SQL SELECT文_目標登録後、登録した目標とステップを抽出 */
  private static final String SQL_COUNT_REGIST = "SELECT max(step_num) as num FROM goal WHERE name = ? and month = ? and week = ? and register_date = ? ;";
@@ -94,7 +94,7 @@ while (rs.next()) {
     String tmpWeek_Goal = rs.getString("week_goal");
     int tmpStep_Num= rs.getInt("step_num");
     int tmpGoal_no = rs.getInt("goal_no");
-//
+
     Goal = new GoalBean();
     Goal.setMonth_goal(tmpMonth_Goal);
     Goal.setWeek_goal(tmpWeek_Goal);
