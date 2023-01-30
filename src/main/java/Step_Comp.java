@@ -40,7 +40,7 @@ public class Step_Comp extends HttpServlet{
      int comp   = Integer.parseInt(request.getParameter("complete"));
      int goal_no = 0 ;
 
-     goal_no = conn.check_goalno(name , year , month , week_of_month , date , comp);
+     goal_no = conn.check_goalno(name , year , month , week_of_month , comp);
     aBean = con.step_achieve(goal_no);
      
  session.setAttribute("aBean", aBean);

@@ -118,7 +118,7 @@
 			                目標・ステップ一覧へ</button>
 		                </form>
 		            
-	                <button class = "check_move"><a href = "Study_Start.jsp">学習開始画面へ</button></a>
+	                <button class = "check_move"><a href = "Study_start.jsp">学習開始画面へ</button></a>
                 </div><!-- check_button -->
 
             </div> <!-- msg_container -->

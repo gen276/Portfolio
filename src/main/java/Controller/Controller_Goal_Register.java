@@ -35,7 +35,7 @@ public class Controller_Goal_Register implements Database{
  private static final String SQL_SELECT_CHECK = "SELECT month_goal , week_goal , step_num , step_content FROM goal WHERE name = ? and month = ? and week = ?;";
  
  /*SQL SELECT文_目標完了時、登達成した目標番号を抽出 */
- private static final String SQL_SELECT_GOAL = "SELECT goal_no from goal where name =? and year = ? and month = ? and week = ? and register_date = ? and step_num = ? ;";
+ private static final String SQL_SELECT_GOAL = "SELECT goal_no from goal where name =? and year = ? and month = ? and week = ? and step_num = ? ;";
  
 // /*SQL UPDATE文 _ 目標・ステップ更新時 */
 // private static final String SQL_UPDATE =  " UPDATE goal_step SET month_goal = ? , step1 = ? , step2 = ? , step3 = ? , step4 = ? , step5 = ? , week_goal = ?"
@@ -285,7 +285,7 @@ return Goal;
 }
 
 
-public int check_goalno(String name , int year , int month , int week_of_month , int date , int stepnum)
+public int check_goalno(String name , int year , int month , int week_of_month , int stepnum)
         throws SQLException, ClassNotFoundException{
     //SQL文格納の為の準備
     PreparedStatement pstmt = null ;
@@ -306,8 +306,7 @@ public int check_goalno(String name , int year , int month , int week_of_month ,
       pstmt.setInt(2, year);
       pstmt.setInt(3, month);
       pstmt.setInt(4, week_of_month);
-      pstmt.setInt(5, date);
-      pstmt.setInt(6, stepnum);
+      pstmt.setInt(5, stepnum);
 
       //SQLの実行と処理結果の格納
       rs = pstmt.executeQuery();
@@ -325,6 +324,5 @@ public int check_goalno(String name , int year , int month , int week_of_month ,
     }
    return goal_no;
 
-   }{
-}
+   }
 }
