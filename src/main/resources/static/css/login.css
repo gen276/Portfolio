@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+/* リスト部分 */
+.login_list{
+	width: 400px;
+	margin: 0 auto;
+	writing-mode: horizontal-tb;
+}
+
+ul li{
+	writing-mode: horizontal-tb;
+}
+
+.result_move{
+	display:flex ;
+}
+
+/*
+.label-danger{
+	color:red;
+	margin:0 auto;
+}
+*/

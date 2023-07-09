@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>登録内容確認画面</title>
+<link th:href = "@{/css/common.css}" rel = "stylesheet" type = "text/css" >
+</head>
+
+<body>
+
+	<div class = "container">
+	
+	<header>独学支援システム</header>
+	
+		<div class = "top_msg">
+		<h2>以下の内容で登録してもよろしいですか</h2>
+		
+			<h3>氏名:		[[${confbean.name}]]</h3>
+	        <h3>ID:			[[${confbean.id}]]</h3>
+	        <h3>パスワード:	[[${confbean.pass}]]</h3>
+	        <h3>出身地:		[[${confbean.pref}]]</h3>
+	        <h3>性別:		[[${confbean.sex}]]</h3>
+	        <h3>電話番号:	[[${confbean.tel}]]</h3>
+	        <h3>メールアドレス: [[${confbean.mail}]]</h3>
+	        <h3>職業:		[[${confbean.job}]]</h3>
+
+		</div> <!-- top_msg -->
+		
+		    <form action = "./register" method = "post" >
+		    	<input name = "name" type = "hidden" value = "${name}">
+				<input name = "id"   type = "hidden" value = "${id}">
+				<input name = "pass" type = "hidden" value = "${pass}">
+				<input name = "pref" type = "hidden" value = "${pref}">
+				<input name = "sex"  type = "hidden" value = "${sex}">
+				<input name = "tel"  type = "hidden" value = "${tel}">
+				<input name = "mail" type = "hidden" value = "${mail}">
+				<input name = "job"  type = "hidden" value = "${job}">
+				<button type = "submit" name = "register_check">確定する</button>
+				<button><a href = "register.jsp">訂正する</a></button>	
+			</form>
+		    
+	</div> <!-- container -->
+		    
+</body>
+</html>
