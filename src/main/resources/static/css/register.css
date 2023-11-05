@@ -1,29 +1,57 @@
 @charset "UTF-8";
 
 /* 表題部分 */
-.top_register{
-	padding-top : 20px ;
-	font-weight : bold ;
+.topmsg_register{
+	padding-top : 10px ;
 	height: 100px ;
 	margin: 0 auto;
 	justify-content: center;
 }
 
-.register_required{
-	color:red;
+.index_register{
+	padding-top : 10px ;
+	font-weight : bold ;
+	height: 40px ;
+	margin: 0 auto;
+	/* background-color: rgb(128, 255, 255); */
+	/* border: 5px ; */
+	/* width: 30%; */
+}
+
+/* .form_register{
+	height: auto;
+	width: 250px;
+} 
+フォーム部品だけを中で別の資格に入れるイメージ*/
+
+.required_register{
+	padding-top : 10px ;
+	font-weight : bold ;
+	height: 40px ;
+	margin: 0 auto;
+	color: red;
 }
 
 /* リスト部分 */
 .register_list{
+	padding-top : 10px ;
 	width: 400px;
 	margin: 0 auto;
+}
+
+.register_list li{
+	padding-top: 10px;
+}
+
+.form_button_register{
+	margin-top: 30px;
 }
 
 .required_info{
 	color:red;
 }
 
-.required_input{
+.required_mark{
 	color: red;
 	margin-left: -20px;
 	padding-right: -20px;

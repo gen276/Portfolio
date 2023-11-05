@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>新規登録画面</title>
+	<link rel = "stylesheet" type = "text/css" href = "./css/common.css">
+	<link rel = "stylesheet" type = "text/css" href = "./css/register.css">
+	<script type="text/javascript" src = "common.js"></script>
+</head>
+
+<body>
+
+	<div class = "main_container">
+	
+		<!-- 題字は仮 -->
+	<header>MokuKatsu</header>
+
+		<div class = "topmsg_register">
+
+				<h3 class="index_register">新規登録フォーム</h3>
+				<h4 class="required_register">※は必須入力です</h4>
+
+		</div> <!-- topmsg_register -->
+		
+				<form method = "POST" th:action = "@{/register_check}" th:object = "${member}">
+				<ul class="register_list">
+					<li><span class="required_mark">※</span>
+						<label>ユーザー名:</label>
+						<input type = "text" th:field = "*{Name}" class = "input_list"/><br></li>
+					<li><span class="required_mark">※</span>
+						<label>ID:</label>
+						<input type = "text" th:field = "*{UserId}" class = "input_list"/><br></li>
+					<li><span class="required_mark">※</span>
+						<label>パスワード:</label>
+						<input type = "password" th:field = "*{Pass}" class = "input_list"/><br></li>
+					<li><label for = "mail">メールアドレス:</label>
+						<input type = "email" th:field = "*{Mail}" class = "input_list"><br></li>
+					<input class="form_button_register" type = "submit">確認する</button><br>
+				</ul></form>
+		    
+	<footer>gen.Inc</footer>
+		    
+	</div> <!-- container -->
+		    
+</body>
+</html>
