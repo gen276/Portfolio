@@ -7,15 +7,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.demo.Bean.member;
+import com.example.demo.Bean.MemberBean;
 
 @Controller
-//@RequestMapping("MokuKatsu")
 public class MokuKatsuController {
 
 	@ModelAttribute
-	public member setUpForm() {
-		member form = new member();
+	public MemberBean setUpForm() {
+		MemberBean form = new MemberBean();
 		return form;
 	}
 	
@@ -27,7 +26,7 @@ public class MokuKatsuController {
 	@PostMapping("register_check")
 	public String showList(Model model , @RequestParam String Name , @RequestParam String UserId ,
 			@RequestParam String Pass , @RequestParam String Mail) {
-//	新規登録内容の確認画面の出力
+		//	新規登録内容の確認画面の出力
 		model.addAttribute("Name" , Name);
 		model.addAttribute("UserId", UserId);
 		model.addAttribute("Pass", Pass);
@@ -35,9 +34,9 @@ public class MokuKatsuController {
 		return "Mok_001/register_check";
 	}
 	
-//	@PostMapping("register_check")
-//	public String confirmView(Confbean c) {
-//		return "confirm";
-//	}
-//	
+	@PostMapping("register_comp")
+	public String register_comp() {
+		//	データベースにデータの新規登録を行う
+		return "Mok_001/register_comp";
+	}
 }

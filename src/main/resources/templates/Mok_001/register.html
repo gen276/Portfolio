@@ -22,7 +22,7 @@
 
 		</div> <!-- topmsg_register -->
 		
-				<form method = "POST" th:action = "@{/register_check}" th:object = "${member}">
+				<form method = "POST" th:action = "@{/register_check}" th:object = "${memberBean}">
 				<ul class="register_list">
 					<li><span class="required_mark">※</span>
 						<label>ユーザー名:</label>
@@ -35,7 +35,7 @@
 						<input type = "password" th:field = "*{Pass}" class = "input_list"/><br></li>
 					<li><label for = "mail">メールアドレス:</label>
 						<input type = "email" th:field = "*{Mail}" class = "input_list"><br></li>
-					<input class="form_button_register" type = "submit">確認する</button><br>
+					<button class="form_button_register" type = "submit">確認する</button><br>
 				</ul></form>
 		    
 	<footer>gen.Inc</footer>
