@@ -1,18 +1,20 @@
 package com.example.demo.Entity;
 
-import java.io.Serializable;
+import org.springframework.data.annotation.Id;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+//Memberテーブルの内容
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Member implements Serializable{
-
+public class Member{
+	
 //	識別ID
+	@Id
 	private Integer Id;
 //　　ユーザー名
 	@NotBlank
