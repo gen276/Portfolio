@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>ステップ登録画面</title>
+	<link th:href = "@{/css/common.css}" rel = "stylesheet" type = "text/css">
+	<link th:href = "@{/css/register.css}" rel = "stylesheet" type = "text/css">
+	<link th:href = "@{/css/goal.css}" rel = "stylesheet" type = "text/css">
+    <script type="text/javascript" src="common.js"></script>
+</head>
+
+<body>
+
+    <div class="goal_container">
+
+    <header>MokuKatsu</header>
+
+        <h2>ステップ登録</h2>
+
+        <form action = "./goal" method="post">
+            <ul class="goal_register">
+
+                    <h3>目標:○○</h3>
+                    <h4>完了目標期日:○○</h4>
+
+                    <li><label>ステップ1:</label>
+                        <input name = "step1" type = "text" size = "50" class = "register_input"
+                        placeholder = "ステップを記入して下さい"/></li>
+                        <li><label>完了目標期日:</label>
+                            <input name = "month_goal" type = "text" size = "50"  class = "register_input"
+                             placeholder = "完了目標期日を記入して下さい"/></li>
+                    <li><label>ステップ2:</label>
+                        <input name = "step2" type = "text" size = "50" class = "register_input"
+                        placeholder = "ステップを記入して下さい"/></li>
+                        <li><label>完了目標期日:</label>
+                            <input name = "month_goal" type = "text" size = "50"  class = "register_input"
+                             placeholder = "完了目標期日を記入して下さい"/></li>
+                    <li><label>ステップ3:</label>
+                        <input name = "step3" type = "text" size = "50" class = "register_input"
+                        placeholder = "ステップを記入して下さい"/></li>
+                        <li><label>完了目標期日:</label>
+                            <input name = "month_goal" type = "text" size = "50"  class = "register_input"
+                             placeholder = "完了目標期日を記入して下さい"/></li>
+                    <li><label>ステップ4:</label>
+                        <input name = "step4" type = "text" size = "50" class = "register_input"
+                        placeholder = "ステップを記入して下さい"/></li>
+                        <li><label>完了目標期日:</label>
+                            <input name = "month_goal" type = "text" size = "50"  class = "register_input"
+                             placeholder = "完了目標期日を記入して下さい"/></li>
+                    <li><label>ステップ5:</label>
+                        <input name = "step5" type = "text" size = "50" class = "register_input"
+                        placeholder = "ステップを記入して下さい"/></li>
+                        <li><label>完了目標期日:</label>
+                            <input name = "month_goal" type = "text" size = "50"  class = "register_input"
+                             placeholder = "完了目標期日を記入して下さい"/></li>
+                    <h5>※ステップ1は必須入力です</h5>
+            </ul>
+
+                <div class="button_area">
+                    <div class="middle_button">
+                        <button type = "submit" class = "check_move"><a href = "Goal_check.jsp">目標確認画面へ戻る</a></button>
+                        <button type = "submit" class = "check_move" name = "goal_register">登録確認画面へ</button>            
+                    </div><!-- middle_button -->
+                </div><!-- button_area -->
+               
+        </form>    
+
+    <footer>gen.Inc</footer>
+
+	</div> <!-- goal_container -->
+
+</body>
+</html>

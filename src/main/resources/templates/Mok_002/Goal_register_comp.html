@@ -3,12 +3,13 @@
 <head>
 	<meta charset="UTF-8">
 	<title>登録完了画面</title>
-	<link rel = "stylesheet" type = "text/css" href = "./css/common.css">
-	<link rel = "stylesheet" type = "text/css" href = "./css/register.css">
+	<link th:href = "@{/css/common.css}" rel = "stylesheet" type = "text/css">
+	<link th:href = "@{/css/register.css}" rel = "stylesheet" type = "text/css">
+	<link th:href = "@{/css/goal.css}" rel = "stylesheet" type = "text/css">
 </head>
 
 <body>
-	<div class = "container">
+	<div class = "main_container">
 		
 		<header>MokuKatsu</header>
 		
@@ -18,7 +19,7 @@
 		
 			</div><!-- top_msg -->
 	
-		<button onclick="location.href='home'">目標確認画面へ</button></a>
+			<button class="large_btn" onclick="location.href='home'">目標確認画面へ</button></a>
 	
 		<footer>gen.Inc</footer>
 	

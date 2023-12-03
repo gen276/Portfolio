@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>過去の目標・ステップ</title>
+	<link th:href = "@{/css/common.css}" rel = "stylesheet" type = "text/css">
+	<link th:href = "@{/css/register.css}" rel = "stylesheet" type = "text/css">
+	<link th:href = "@{/css/goal.css}" rel = "stylesheet" type = "text/css">
+</head>
+
+	<div class = "goal_container">
+	
+		<header>MokuKatsu</header>
+			
+        <main>
+        <div class = "top_msg">
+		
+			<h2>過去の目標・ステップ</h2>
+		        <table>
+	
+				<thead>○○さんの直近5件の目標達成状況</thead>
+			        <tr><td>登録日</td><td>目標内容</td><td>ステップ1</td><td>ステップ2</td><td>ステップ3</td><td>ステップ4</td><td>ステップ5</td>
+						<tr><th>○○○○/○○/○○</th><td>○○○○</td><td>○</td><td>○</td><td>○</td><td>○</td><td>○</td></tr>
+						<tr><th>○○○○/○○/○○</th><td>○○○○</td><td>○</td><td>○</td><td>○</td><td>○</td><td>○</td></tr>
+						<tr><th>○○○○/○○/○○</th><td>○○○○</td><td>○</td><td>○</td><td>○</td><td>○</td><td>○</td></tr>
+						<tr><th>○○○○/○○/○○</th><td>○○○○</td><td>○</td><td>○</td><td>○</td><td>○</td><td>○</td></tr>
+						<tr><th>○○○○/○○/○○</th><td>○○○○</td><td>○</td><td>○</td><td>○</td><td>○</td><td>○</td></tr>
+          		</table>	
+                
+                <div class = "check_button">
+	                <button class = "check_move"><a href = "Goal_register.jsp">目標・ステップ一覧</button></a>
+	                <button class = "check_move"><a href = "Study_start.jsp">学習開始画面へ</button></a>
+                </div><!-- check_button -->
+
+            </div> <!-- msg_container -->
+            
+         <footer>gen.Inc</footer>
+
+        </main>
+
+	</div> <!-- goal_container -->
+
+</body>
+</html>

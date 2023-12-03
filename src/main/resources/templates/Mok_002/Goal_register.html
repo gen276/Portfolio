@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>目標登録画面</title>
+	<!-- <link rel = "stylesheet" type = "text/css" href = "trial.css"> -->
+	<link th:href = "@{/css/common.css}" rel = "stylesheet" type = "text/css">
+	<link th:href = "@{/css/register.css}" rel = "stylesheet" type = "text/css">
+	<link th:href = "@{/css/goal.css}" rel = "stylesheet" type = "text/css">
+    <script type="text/javascript" src="common.js"></script>
+</head>
+
+<body>
+
+    <div class="goal_container">
+
+    <header>MokuKatsu</header>
+
+        <!-- <div class="goal_header">
+            <div class = "login_check">
+                <h2 class="login_header">こんにちは○○さん</h2>
+                <button class="login_header"><a href = "logout.jsp">ログアウト</a></button>           
+            </div> <!-- login_check -->
+        <!-- </div>goal_header -->
+
+        <h2>目標登録</h2>
+
+        <form action = "./goal" method="post">
+            <div class="goal_register">
+                <ul>
+                    <h3>現在の目標:○○○○</h3>
+
+                    <li><div class="triangle-bottom"></div><li>
+
+                    <li><label>○月の目標:</label>
+                        <input name = "month_goal" type = "text" size = "50"  class = "register_input"
+                            placeholder = "月目標を記入して下さい"/></li>
+                    <li><label>完了目標期日:</label>
+                        <input name = "month_goal" type = "text" size = "50"  class = "register_input"
+                         placeholder = "完了目標期日を記入して下さい"/></li>
+                    <input name = "month" type = "hidden" value = "<%= GetMonth() %>">
+                    <input name = "week" type = "hidden" value = "<%= GetW_M() %>"><li>
+ 
+                </ul>
+                        <div class="button_area">
+                            <div class="middle_button">
+                                <button type = "submit" class = "check_move"><a href = "Goal_check.jsp">目標確認画面へ戻る</a></button>
+                                <button type = "submit" class = "check_move" name = "goal_register">ステップ登録へ</button>            
+                            </div><!-- middle_button -->
+                        </div><!-- button_area -->
+            </div>
+        </form>    
+
+    <footer>gen.Inc</footer>
+
+	</div> <!-- goal_container -->
+
+</body>
+</html>

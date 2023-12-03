@@ -27,5 +27,6 @@ public class Member{
 	private String  Pass;	
 //	メールアドレス
 	private String  Mail;
-
+//新規登録かログインかを判定する
+//	private boolean  login;
 }

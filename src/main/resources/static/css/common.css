@@ -28,11 +28,16 @@ tr{
 }
 
 table{
-	border :  3 ;
-	max-width : 800 ;
-	height : 150 ;
+	text-align: center;
+	border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
 }
 
+table tr,table th,table td {
+  	border: solid 3px;
+	/* vertical-align: middle; */
+}
 /* ヘッダー部分 */
 header{
 	margin-top: 20px;
@@ -66,14 +71,21 @@ footer{
 }
 
 .msg_container{
-    max-height: 600px ;
+    max-height: 1000px ;
 }
 
 .msg_container h1{
 	height : 50% ;
 }
 
-
+/* 下向き矢印 */
+.triangle-bottom {
+	display: inline-block;
+	border-style: solid;
+	border-width: 24px 14px 0 14px;
+	border-color: #000 transparent transparent transparent;
+	margin: 0 auto ;
+  }
 
 /* 新規登録,ログイン時ラベル記入部分 */
 label{
@@ -90,11 +102,29 @@ ul li{
 	display: flex;
 }
 
-
-
-/*
-.msg_container{
-	border : 1rem solid ;
+.button_area{
+	padding: 10px;
 }
-*/
 
+/* リンクボタン1つ */
+.large_btn{
+	width : 200px ;
+	margin : 0 auto ;
+}
+/* リンクボタン2つ */
+.middle_button{
+	display: flex ;
+    margin: 0 auto;
+    /* background-color: blue; */
+	justify-content: space-between ;
+    height: 30px;
+}
+
+/* リンクボタン3つ */
+.small_button{
+	display: flex ;
+    margin: 0 auto;
+    /* background-color: blue; */
+	justify-content: space-between ;
+    height: 30px;
+}

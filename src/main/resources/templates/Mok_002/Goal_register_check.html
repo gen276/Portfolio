@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>目標・ステップ登録内容確認画面</title>
+<link th:href = "@{/css/common.css}" rel = "stylesheet" type = "text/css">
+<link th:href = "@{/css/register.css}" rel = "stylesheet" type = "text/css">
+<link th:href = "@{/css/goal.css}" rel = "stylesheet" type = "text/css">
+</head>
+
+<body>
+
+	<div class = "main_container">
+	
+	<header>MokuKatsu</header>
+	
+		<div class = "top_msg">
+		<h2>以下の内容で登録してもよろしいですか</h2>
+	
+			<h3>目標:○○</h3>
+			<h4>完了目標期日:○○</h4>
+
+			<table>
+				<!-- <table border = "3" width = "400" height = "150" align = "center"> -->
+			<thead>ステップ</thead>
+				<tr><td>ステップNo.</td><td>内容</td><td>目標期日</td>
+				<tr><th>○○○○</th><td>○○○○</td><td>○○○○</td></tr>
+				<tr><th>○○○○</th><td>○○○○</td><td>○○○○</td></tr>
+				<tr><th>○○○○</th><td>○○○○</td><td>○○○○</td></tr>
+				<tr><th>○○○○</th><td>○○○○</td><td>○○○○</td></tr>
+				<tr><th>○○○○</th><td>○○○○</td><td>○○○○</td></tr>
+			</table>
+
+			<!-- <h3>目標:○○</h3>
+			<h3>ステップ1:○○</h3>
+			<h4>期限:○○</h4>
+			<h3>ステップ2:○○</h3>			
+			<h4>期限:○○</h4>
+			<h3>ステップ3:○○</h3>
+			<h4>期限:○○</h4>
+			<h3>ステップ4:○○</h3>
+			<h4>期限:○○</h4>
+			<h3>ステップ5:○○</h3>
+			<h4>期限:○○</h4> -->
+
+		</div> <!-- top_msg -->
+		
+		    <form action = "./register" method = "post" >
+		    	<input name = "name" type = "hidden" value = "${name}">
+				<input name = "id"   type = "hidden" value = "${id}">
+				<input name = "pass" type = "hidden" value = "${pass}">
+				<input name = "pref" type = "hidden" value = "${pref}">
+				<input name = "sex"  type = "hidden" value = "${sex}">
+				<input name = "tel"  type = "hidden" value = "${tel}">
+				<input name = "mail" type = "hidden" value = "${mail}">
+				<input name = "job"  type = "hidden" value = "${job}">
+
+				<div class="button_area">
+					<div class="small_button">
+						<button class="check_move"><a href="Goal_register.jsp">目標登録へ</button></a>
+						<form action="./goal_list" method="POST" name="form">
+							<button class="check_move" type="submit">
+								<input name="name" type="hidden" value="<jsp:getProperty name = " StudentName"
+									property="name" />
+								ステップ登録へ</button>
+						</form>
+						<button class="check_move"><a href="Study_start.jsp">確定する</button></a>
+					</div><!-- small_button -->
+				</div><!-- button_area -->
+		</form>
+	</div> <!-- container -->
+		    
+</body>
+</html>

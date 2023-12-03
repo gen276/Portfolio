@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>目標確認画面</title>
+<link th:href = "@{/css/common.css}" rel = "stylesheet" type = "text/css">
+<link th:href = "@{/css/register.css}" rel = "stylesheet" type = "text/css">
+<link th:href = "@{/css/goal.css}" rel = "stylesheet" type = "text/css">
+</head>
+
+<body>
+
+	<div class="goal_container">
+
+		<header>MokuKatsu</header>
+
+		<div class="goal_header">
+			<div class="login_check">
+				<h2 class="login_header">こんにちは○○さん</h2>
+				<button class="login_header"><a href="logout.jsp">ログアウト</a></button>
+			</div> <!-- login_check -->
+		</div><!-- goal_header -->
+
+		<main>
+			<div class="msg_container">
+
+				<div class="goal_check">
+					<h2 class="goal_box">○月の目標</h2>
+					<h3 class="goal_main">未設定</h3>
+				</div>
+
+				<div class="achieve_step">
+					<h2>達成ステップ</h2>
+
+					<form action="/step_comp"></form>
+					<table border="3" width="600" height="150">
+						<tr>
+							<th>ステップNo.</th>
+							<td>ステップ内容</td>
+							<td>目標期限</td>
+							<td>ステータス</td>
+						<tr>
+							<th>1</th>
+							<td>
+								<%=goal.getStep1() %>
+							</td>
+							<td>未設定</td>
+							<td>未設定</td>
+						</tr>
+						<tr>
+							<th>2</th>
+							<td>
+								<%=goal.getStep1() %>
+							</td>
+							<td>未設定</td>
+							<td>未設定</td>
+						</tr>
+						<tr>
+							<th>3</th>
+							<td>
+								<%=goal.getStep1() %>
+							</td>
+							<td>未設定</td>
+							<td>未設定</td>
+						</tr>
+						<tr>
+							<th>4</th>
+							<td>
+								<%=goal.getStep1() %>
+							</td>
+							<td>未設定</td>
+							<td>未設定</td>
+						</tr>
+						<tr>
+							<th>5</th>
+							<td>
+								<%=goal.getStep2() %>
+							</td>
+							<td>未設定</td>
+							<td>
+								未設定
+							</td>
+						</tr>
+					</table>
+				</div><!-- achieve_step -->
+				<h3 class="achievement_late">達成率○％</h3>
+
+				<div class="button_area">
+					<div class="small_button">
+						<button class="check_move"><a href="Goal_register.jsp">目標・ステップの登録</button></a>
+						<form action="./goal_list" method="POST" name="form">
+							<button class="check_move" type="submit">
+								<input name="name" type="hidden" value="<jsp:getProperty name = " StudentName"
+									property="name" />
+								目標・ステップ一覧へ</button>
+						</form>
+						<button class="check_move"><a href="Study_start.jsp">学習開始画面へ</button></a>
+					</div><!-- small_button -->
+				</div><!-- button_area -->
+				
+			</div> <!-- msg_container -->
+
+			<footer>gen.Inc</footer>
+
+		</main>
+
+	</div> <!-- goal_container -->
+
+</body>
+
+</html>

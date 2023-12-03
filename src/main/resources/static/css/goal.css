@@ -67,7 +67,6 @@
 
 .step_list_container{
     margin-top: -17px;
-    /* background-color: brown; */
 }
 
 .achieve_step h3{
@@ -79,7 +78,7 @@ tr{
 }
 
 .achievement_late{
-    padding-top: 20px;
+    padding: 5px;
 }
 
 /* 週間目標 */
@@ -108,16 +107,6 @@ tr{
 }
 
 /* 画面移動 */
-.check_button{
-	padding-top: 20px;
-	padding-bottom: 10px;
-	display: flex ;
-    margin: 0 auto;
-    /* background-color: blue; */
-	justify-content: space-between ;
-    height: 30px;
-}
-
 .check_move{
     margin: 0 auto;
 }

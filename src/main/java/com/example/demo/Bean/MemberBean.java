@@ -25,5 +25,7 @@ public class MemberBean implements Serializable{
 	private String  Pass;	
 //	メールアドレス
 	private String  Mail;
+//新規登録かログインを判定する
+//	private Boolean register;
 
 }
