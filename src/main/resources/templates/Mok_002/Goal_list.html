@@ -1,44 +1,13 @@
-<%@page import="java.io.PrintWriter"%>
-<%@page import="java.beans.beancontext.BeanContext"%>
-<%@page import="org.apache.jasper.tagplugins.jstl.core.Import"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ page import="java.util.Calendar" %>
-<jsp:useBean id = "StudentName" scope = "session" class = "Bean.RegisterBean" />
-<%@ page import="Bean.GoalBean"%>
-
-<%
-	Bean.GoalBean goal =(Bean.GoalBean)session.getAttribute("GBean");
-%>
-
-
-<%!
-  private int GetMonth() {
-    Calendar cal = Calendar.getInstance();
-    int Month = cal.get(Calendar.MONTH) + 1;
-    return Month;
-  }
-
- private int GetW_M() {
-    Calendar cal = Calendar.getInstance();
-    int week_of_month = cal.get(Calendar.WEEK_OF_MONTH);
-    return week_of_month;
-  }
-%>
-
-<%
-	request.setCharacterEncoding("utf-8");
-%>
-
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>目標・ステップ一覧</title>
-	<!-- <link rel = "stylesheet" type = "text/css" href = "trial.css"> -->
-	<link rel = "stylesheet" type = "text/css" href = "./css/goal.css">
+	<title>目標・ステップ一覧画面</title>
+	<link rel = "stylesheet" type = "text/css" href = "./css/login.css">
 	<link rel = "stylesheet" type = "text/css" href = "./css/common.css">
+	<script type="text/javascript" src = "./js/common.js"></script>
 </head>
+
 <body>
 
 	<div class = "goal_container">

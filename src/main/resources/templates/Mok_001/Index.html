@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th = "http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>初期表示画面</title>
+	<link rel = "stylesheet" type = "text/css" href = "./css/common.css">
+	<link rel = "stylesheet" type = "text/css" href = "./css/register.css">
+	<script type="text/javascript" src = "common.js"></script>
+</head>
+
+<body>
+
+	<div class = "main_container">
+	
+	<header>MokuKatsu</header>
+	
+		<div class = "menu_container">
+		
+				<div class = "top_msg">
+				
+					<h3 class="index_register" th:text = "${message}">メッセージ</h3>
+		
+				</div> <!-- top_msg -->
+			
+			<div class = "msg_container">
+		
+				<h1>ログインの方はこちら</h1>
+					<a th:href = "@{/login}">
+					<button>ログイン</button></a><br>
+				
+				<h1>新規登録の方はこちら</h1>
+					<a th:href = "@{/register}">
+					<button>新規登録</button></a>
+				
+			</div> <!-- msg_container -->
+		
+		</div> <!-- menu_container -->
+	
+	<footer>gen.Inc</footer>
+
+	</div> <!-- main_container -->
+
+</body>
+</html>

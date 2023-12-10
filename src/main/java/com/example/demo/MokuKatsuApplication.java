@@ -23,9 +23,9 @@ public class MokuKatsuApplication {
 	
 //	新規登録の実行
 	private void register() {
-//		エンティティの作成
+////		エンティティの作成
 //		Member newMember = new Member(null , "genta" , "AAAAA" , "BBBBB", "xxxx@xxxxx.ne.jp");
-		
+//		
 //		登録の実行
 //		newMember = repository.save(newMember);
 		

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>ログイン画面</title><!-- top_msg -->
+	<link rel = "stylesheet" type = "text/css" href = "./css/login.css">
+	<link rel = "stylesheet" type = "text/css" href = "./css/common.css">
+	<script type="text/javascript" src = "./js/common.js"></script>
+</head>
+
+<body>
+
+	<div class = "main_container">
+	
+	<header>MokuKatsu</header>
+	
+		<div class = "top_msg">
+		
+			<h2 th:text = ${title}>タイトル</h2><br>
+			<span th:text = ${errorMsg}></span>
+			
+		</div> <!-- top_msg -->
+
+		<form method = "POST" th:action="@{/Goal_list}" th:object = "${memberBean}">
+			<ul class="login_list">
+				<li><label for = "userid">ID:</label>
+				<input type = "text" class = "input_list" th:field = "*{UserId}"/></li><br>
+				<li><label for = "pass">パスワード:</label>
+				<input type = "password" class = "input_list" th:field = "*{Pass}"/></li><br>
+			    <button type = "submit">確認する</button>
+			 </ul>
+		</form>
+	
+	<footer>gen.Inc</footer>
+	
+	</div> <!-- container -->
+		    
+</body>
+</html>

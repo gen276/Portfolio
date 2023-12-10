@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 	<meta charset="UTF-8">
 	<title>目標確認画面</title>
-<link th:href = "@{/css/common.css}" rel = "stylesheet" type = "text/css">
-<link th:href = "@{/css/register.css}" rel = "stylesheet" type = "text/css">
-<link th:href = "@{/css/goal.css}" rel = "stylesheet" type = "text/css">
+	<link rel = "stylesheet" type = "text/css" href = "./css/login.css">
+	<link rel = "stylesheet" type = "text/css" href = "./css/common.css">
+	<script type="text/javascript" src = "./js/common.js"></script>
 </head>
 
 <body>
@@ -91,8 +90,7 @@
 						<button class="check_move"><a href="Goal_register.jsp">目標・ステップの登録</button></a>
 						<form action="./goal_list" method="POST" name="form">
 							<button class="check_move" type="submit">
-								<input name="name" type="hidden" value="<jsp:getProperty name = " StudentName"
-									property="name" />
+								<input name="name" type="hidden"/>
 								目標・ステップ一覧へ</button>
 						</form>
 						<button class="check_move"><a href="Study_start.jsp">学習開始画面へ</button></a>

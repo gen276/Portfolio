@@ -1,12 +1,27 @@
 package com.example.demo.Service;
 
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
 import com.example.demo.Entity.Member;
+import com.example.demo.Repository.MemberRepository;
 
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
 //Memberサービス処理
-public interface MemberService {
+public class MemberService {
+	
+	private final MemberRepository repository;
 
-//メンバー情報の登録
-	void insertMember(Member member);
+	public Optional<Member> searchUserById (String UserId) {
+		return repository.findById(UserId);
+	}
+	
+////メンバー情報の登録
+//	void insertMember(Member member);
 	
 //新規登録かログインの判定
 //	Boolean Login(Boolean login);
