@@ -9,27 +9,42 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-//Memberテーブルの内容
+/**
+ * DBから取得したMemberテーブルの情報を一時的に保管する
+ * @author 81805
+ *
+ */
+
 @Table(name = "member")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Member{
 	
-//	識別ID
+/**
+ * 識別ID
+ */
+	@Id
 	private Integer Id;
-//　　ユーザー名
+	/**
+	 * ユーザー名
+	 */
 	@NotBlank
 	private String  Name;
-//　　ユーザーID
-	@Id
+	/**
+	 * ユーザーID
+	 */
 	@Column
 	@NotBlank
-	private String UserId;
-//　　パスワード
+	private Integer UserId;
+	/**
+	 * パスワード
+	 */
 	@NotBlank
 	private String  Pass;	
-//	メールアドレス
+	/**
+	 * メールアドレス
+	 */
 	private String  Mail;
 //新規登録かログインかを判定する
 //	private boolean  login;

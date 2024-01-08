@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th = "http://www.thymeleaf.org">
 <head>
 	<meta charset="UTF-8">
 	<title>目標確認画面</title>
@@ -10,22 +10,22 @@
 
 <body>
 
-	<div class="goal_container">
+	<div class="main_container">
 
 		<header>MokuKatsu</header>
 
 		<div class="goal_header">
 			<div class="login_check">
-				<h2 class="login_header">こんにちは○○さん</h2>
+				<h2 class="login_header" th:text = "${name}"></h2>
 				<button class="login_header"><a href="logout.jsp">ログアウト</a></button>
 			</div> <!-- login_check -->
-		</div><!-- goal_header -->
+		</div><!--goal_header -->
 
 		<main>
 			<div class="msg_container">
 
 				<div class="goal_check">
-					<h2 class="goal_box">○月の目標</h2>
+					<h2 class="goal_box" th:text = "${month}"></h2>
 					<h3 class="goal_main">未設定</h3>
 				</div>
 

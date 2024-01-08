@@ -33,7 +33,7 @@
 				</ul>
 		</div> <!-- top_msg -->
 		
-		    <form method = "POST" th:action = "@{/register_comp}" th:object = "${memberBean}">
+		    <form method = "POST" th:action = "@{/register_comp}" th:object = "${memberForm}">
 		    	<input th:field = "*{Name}" type = "hidden">
 				<input th:field = "*{UserId}" type = "hidden">
 				<input th:field = "*{Pass}" type = "hidden">
